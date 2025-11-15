@@ -1,40 +1,52 @@
 <!DOCTYPE html>
 <html lang="de">
-  <head>
+<head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meine erste Website</title>
+    <title>JuliAmKunst – Home</title>
     <link rel="stylesheet" href="style.css">
-  </head>
-  <body>
-    <header>
-      <h1>Willkommen auf meiner Website</h1>
-      <nav>
-        <a href="#">Start</a>
-        <a href="#">Über mich</a>
-        <a href="#">Kontakt</a>
-      </nav>
-    </header>
+</head>
+<body>
 
-    <main>
-      <section>
-        <h2>Mein erstes Projekt</h2>
-        <p>Hier entsteht etwas Spannendes – mit HTML, CSS und JavaScript.</p>
-        <button id="colorButton">Farbe ändern</button>
-      </section>
-    </main>
+    <!-- -------------------------------------------------
+         Navigationsleiste (helles Rosa)
+         ------------------------------------------------- -->
+    <nav>
+        <p id="logo">JuliAmKunst</p>
+        <ul class="links">
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="ueber.html">About</a></li>
+            <li><a href="galerie.html">Blog</a></li>
+            <li><a href="impressum.html">Contact</a></li>
+        </ul>
+    </nav>
 
-    <footer>
-      <p>© 2025 – erstellt im Enrichment-Kurs „Mit KI zur eigenen Website“</p>
-      <p>
-	  <!-- ===========================================================
-			Impressum - Bitte nicht verändern! (rechtlich verbindlich)
-		=========================================================== -->
-        <a href="impressum.html" target="_blank" rel="noopener noreferrer">Impressum</a>
-		<a href="impressum_eltern.html" target="_blank" rel="noopener noreferrer">Impressum verantwortliche Eltern</a>
-      </p>
-    </footer>
+    <!-- -------------------------------------------------
+         Hauptbereich
+         ------------------------------------------------- -->
+    <div class="main">
+        <!-- Text‑Spalte -->
+        <div class="txt">
+            <h2>Julia Amalie und ihre Kunst</h2>
+
+            <p>
+                Hier zeige ich dir Bilder, die ich gezeichnet und gemalt habe. Sie können dir als
+                Inspiration dienen oder du schaust sie dir einfach an. Ich werde hier immer mal wieder
+                neue Bilder reinstellen. Ich hoffe, sie gefallen dir ;)
+            </p>
+
+            <div class="buttons">
+                <button class="button" id="btn1">Get in touch</button>
+            </div>
+        </div>
+
+        <!-- Bild‑Container – **drei** Bild‑Boxen -->
+        <div class="pictures">
+            <div class="img" id="img1"></div>
+            <div class="img" id="img2"></div>
+            <div class="img" id=""></div>
+        </div>
+    </div>
 
     <script src="script.js"></script>
-  </body>
+</body>
 </html>

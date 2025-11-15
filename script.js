@@ -1,7 +1,13 @@
-// Einfaches Beispiel für Interaktivität
-const button = document.getElementById("colorButton");
+/* -------------------------------------------------
+   script.js – Klick‑Handler für den "Get in touch"-Button
+   ------------------------------------------------- */
 
-button.addEventListener("click", () => {
-  document.body.style.backgroundColor =
-    document.body.style.backgroundColor === "lightblue" ? "#f9f9f9" : "lightblue";
+document.addEventListener('DOMContentLoaded', () => {
+    const btn = document.getElementById('btn1');
+
+    if (btn) {
+        btn.addEventListener('click', () => {
+            alert('Danke für dein Interesse! Wir melden uns bald.');
+        });
+    }
 });

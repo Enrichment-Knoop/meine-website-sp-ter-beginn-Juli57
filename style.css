@@ -1,48 +1,189 @@
+/* -------------------------------------------------
+   Basis‑Reset
+   ------------------------------------------------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* -------------------------------------------------
+   HTML & Body – voller Viewport, hell‑rosa Verlauf
+   ------------------------------------------------- */
+html,
 body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  line-height: 1.6;
-  background-color: #f9f9f9;
-  color: #333;
+    height: 100%;
+}
+body {
+    font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.6;
+    background: linear-gradient(
+        135deg,
+        #ffccf2 0%,
+        #ffe6f9 100%
+    );
+    color: #000;               /* gesamte Schrift schwarz */
 }
 
-header {
-  background: #005f99;
-  color: white;
-  padding: 1em 0;
-  text-align: center;
+/* -------------------------------------------------
+   Navigation – helles Rosa
+   ------------------------------------------------- */
+nav {
+    background-color: #ffccf2;
+    padding: 0 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+#logo {
+    font-size: 20px;
+    font-weight: bold;
+    color: #000;
+}
+.links {
+    display: flex;
+    gap: 36px;
+    list-style: none;
+}
+.links a {
+    text-decoration: none;
+    color: #000;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+.links a:hover,
+.links a.active {
+    color: #000;
 }
 
-nav a {
-  color: white;
-  margin: 0 10px;
-  text-decoration: none;
-  font-weight: bold;
+/* -------------------------------------------------
+   Hauptbereich – mindestens volle Viewport‑Höhe
+   ------------------------------------------------- */
+.main {
+    width: 100%;
+    min-height: 100vh;               /* füllt mindestens den Bildschirm */
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 4fr 0.8fr;
+    column-gap: 12px;
+    row-gap: 24px;
+    padding: 2rem;
 }
 
-main {
-  padding: 2em;
-  text-align: center;
+/* -------------------------------------------------
+   Text‑Spalte – zentriert
+   ------------------------------------------------- */
+.txt {
+    grid-column: 1/2;
+    grid-row: 1/2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;      /* horizontale Zentrierung */
+    text-align: center;       /* Zeilen‑Zentrierung */
+    gap: 1rem;
+}
+.txt h2 {
+    font-size: 2.5rem;
+    margin: 0;
+    color: #000;
+}
+.txt p {
+    font-size: 1.1rem;
+    color: #000;
+    max-width: 600px;
 }
 
-button {
-  padding: 10px 20px;
-  background: #005f99;
-  border: none;
-  color: white;
-  cursor: pointer;
-  border-radius: 5px;
+/* -------------------------------------------------
+   Buttons
+   ------------------------------------------------- */
+.buttons {
+    display: flex;
+    gap: 24px;
+}
+.button {
+    border-radius: 20px;
+    border: none;
+    font-weight: bold;
+    font-size: 0.95rem;
+    cursor: pointer;
+    padding: 0.6rem 1.2rem;
+    text-decoration: none;
+    display: inline-block;
 }
 
-button:hover {
-  background: #007acc;
+/* Get in touch – schwarz mit weißer Schrift */
+#btn1 {
+    background-color: #000;   /* schwarz */
+    color: #fff;              /* weiße Schrift */
 }
 
-footer {
-  text-align: center;
-  padding: 1em;
-  background: #eee;
-  margin-top: 2em;
-  font-size: 0.9em;
+/* -------------------------------------------------
+   Bild‑Container – volle Höhe des Viewports
+   ------------------------------------------------- */
+.pictures {
+    grid-column: 2/3;
+    grid-row: 1/2;
+    display: flex;
+    justify-content: space-between;
+    gap: 5px;                 /* kleiner Abstand → wirkt breiter */
+    background: transparent;
+    height: 100vh;            /* Bild‑Boxen erstrecken sich über den gesamten Bildschirm */
+    overflow: hidden;         /* verhindert, dass übergroße Inhalte auslaufen */
+}
+
+/* Einzelne Bild‑Divs – drei Boxen, etwas breiter */
+.img {
+    width: 32%;               /* 3 × 32 % + 2 × gap ≈ 100 % */
+    border-radius: 70px;
+    background-size: contain;      /* **Skaliert das Bild vollständig hinein** */
+    background-repeat: no-repeat;  /* verhindert Wiederholung */
+    background-position: center;   /* zentriert das Bild */
+}
+
+/* -------------------------------------------------
+   Bild‑Hintergründe – Platzhalter‑Bilder (Unsplash)
+   ------------------------------------------------- */
+#img1 {
+    background-image: url("https://images.unsplash.com/photo-1587614382346-4d9fe5b3b2c1?auto=format&fit=crop&w=800&q=80");
+}
+#img2 {
+    background-image: url("https://images.unsplash.com/photo-1528744598421-b7d3c2f7c5f2?auto=format&fit=crop&w=800&q=80");
+}
+#img3 {
+    background-image: url("https://images.unsplash.com/photo-1504198266282-1659872e6590?auto=format&fit=crop&w=800&q=80");
+}
+
+/* -------------------------------------------------
+   Responsives Design (kleinere Bildschirme)
+   ------------------------------------------------- */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+    .links {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .main {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+    }
+
+    .pictures {
+        height: auto;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .img {
+        width: 48%;          /* zwei Bilder pro Zeile auf mobilen Geräten */
+        height: 200px;       /* feste Höhe, damit sie nicht zu hoch werden */
+        margin-bottom: 10px;
+    }
 }
