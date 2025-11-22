@@ -1,3 +1,5 @@
+/* Version: 1.22 */
+
 /* -------------------------------------------------
    Basis‑Reset
    ------------------------------------------------- */
@@ -22,7 +24,35 @@ body {
         #ffccf2 0%,
         #ffe6f9 100%
     );
-    color: #000;               /* gesamte Schrift schwarz */
+    color: #000;
+}
+
+/* -------------------------------------------------
+   About‑Seite – Hintergrundbild 4.jpg (mit pink‑Fallback)
+   ------------------------------------------------- */
+.about-page {
+    background: #ffccf2 url("img/4.jpg") center/cover no-repeat;
+}
+
+/* -------------------------------------------------
+   Glas‑Box (Glass‑morphism) – größer und weißer
+   ------------------------------------------------- */
+.about-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 60px);   /* volle Höhe minus Navigation */
+    padding: 2rem;
+}
+.glass-box {
+    background: rgba(255, 255, 255, 0.5);   /* stärker weiß (Alpha 0.5) */
+    border-radius: 20px;
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    padding: 3rem;               /* mehr Innenabstand */
+    max-width: 1000px;           /* größere Breite */
 }
 
 /* -------------------------------------------------
@@ -51,11 +81,11 @@ nav {
     text-decoration: none;
     color: #000;
     font-weight: 500;
-    transition: color 0.2s;
+    transition: color 0.2s ease-in-out;
 }
 .links a:hover,
 .links a.active {
-    color: #000;
+    color: #add8e6;   /* hellblau beim Hover/aktiv */
 }
 
 /* -------------------------------------------------
@@ -63,10 +93,10 @@ nav {
    ------------------------------------------------- */
 .main {
     width: 100%;
-    min-height: 100vh;               /* füllt mindestens den Bildschirm */
+    min-height: 100vh;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 4fr 0.8fr;
+    grid-template-rows: 4fr 0.8rem;
     column-gap: 12px;
     row-gap: 24px;
     padding: 2rem;
@@ -81,8 +111,8 @@ nav {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;      /* horizontale Zentrierung */
-    text-align: center;       /* Zeilen‑Zentrierung */
+    align-items: center;
+    text-align: center;
     gap: 1rem;
 }
 .txt h2 {
@@ -97,13 +127,14 @@ nav {
 }
 
 /* -------------------------------------------------
-   Buttons
+   Buttons – nutzbar für <a> und <button>
    ------------------------------------------------- */
 .buttons {
     display: flex;
     gap: 24px;
 }
 .button {
+    display: inline-block;
     border-radius: 20px;
     border: none;
     font-weight: bold;
@@ -111,13 +142,16 @@ nav {
     cursor: pointer;
     padding: 0.6rem 1.2rem;
     text-decoration: none;
-    display: inline-block;
+    background-color: #000;
+    color: #fff;
+    transition: background-color 0.2s ease-in-out,
+                box-shadow 0.2s ease-in-out;
 }
-
-/* Get in touch – schwarz mit weißer Schrift */
-#btn1 {
-    background-color: #000;   /* schwarz */
-    color: #fff;              /* weiße Schrift */
+.button:hover,
+.button:focus {
+    background-color: #add8e6;
+    color: #000;
+    box-shadow: 0 0 12px rgba(173,216,230,0.6);
 }
 
 /* -------------------------------------------------
@@ -128,32 +162,71 @@ nav {
     grid-row: 1/2;
     display: flex;
     justify-content: space-between;
-    gap: 5px;                 /* kleiner Abstand → wirkt breiter */
+    gap: 15px;
     background: transparent;
-    height: 100vh;            /* Bild‑Boxen erstrecken sich über den gesamten Bildschirm */
-    overflow: hidden;         /* verhindert, dass übergroße Inhalte auslaufen */
-}
-
-/* Einzelne Bild‑Divs – drei Boxen, etwas breiter */
-.img {
-    width: 32%;               /* 3 × 32 % + 2 × gap ≈ 100 % */
-    border-radius: 70px;
-    background-size: contain;      /* **Skaliert das Bild vollständig hinein** */
-    background-repeat: no-repeat;  /* verhindert Wiederholung */
-    background-position: center;   /* zentriert das Bild */
+    height: 100vh;
+    overflow: hidden;
 }
 
 /* -------------------------------------------------
-   Bild‑Hintergründe – Platzhalter‑Bilder (Unsplash)
+   Bild‑Boxen – 4:3‑Verhältnis, stärker transparent
    ------------------------------------------------- */
-#img1 {
-    background-image: url("https://images.unsplash.com/photo-1587614382346-4d9fe5b3b2c1?auto=format&fit=crop&w=800&q=80");
+.img {
+    width: 32%;
+    aspect-ratio: 4 / 3;
+    border-radius: 30px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.7;                 /* leicht undurchsichtig */
+    transition: opacity 0.2s ease-in-out,
+                transform 0.2s ease-in-out;
 }
-#img2 {
-    background-image: url("https://images.unsplash.com/photo-1528744598421-b7d3c2f7c5f2?auto=format&fit=crop&w=800&q=80");
+.img:hover {
+    opacity: 1;
+    transform: scale(1.03);
 }
-#img3 {
-    background-image: url("https://images.unsplash.com/photo-1504198266282-1659872e6590?auto=format&fit=crop&w=800&q=80");
+#img1 { background-image: url("img/1.jpg"); }
+#img2 { background-image: url("img/2.jpg"); }
+#img3 { background-image: url("img/3.jpg"); }
+
+/* -------------------------------------------------
+   Layout‑Klassen für weitere Seiten
+   ------------------------------------------------- */
+.content {
+    max-width: 900px;
+    margin: 4rem auto;
+    padding: 0 2rem;
+}
+.content h2 {
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+    color: #000;
+}
+.content p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #000;
+}
+
+/* About‑Seite – größerer Text in der Glas‑Box */
+.about-content p {
+    font-size: 1.2rem;
+}
+
+/* Galerie‑Grid (Platzhalter‑Stil) */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    margin-top: 2rem;
+}
+.gallery-item {
+    height: 200px;
+    background: #ddd;
+    border-radius: 10px;
+    background-size: cover;
+    background-position: center;
 }
 
 /* -------------------------------------------------
@@ -182,8 +255,13 @@ nav {
     }
 
     .img {
-        width: 48%;          /* zwei Bilder pro Zeile auf mobilen Geräten */
-        height: 200px;       /* feste Höhe, damit sie nicht zu hoch werden */
+        width: 48%;          /* zwei Bilder pro Zeile */
+        aspect-ratio: 4 / 3;
         margin-bottom: 10px;
+    }
+
+    .about-wrapper {
+        height: auto;
+        padding: 1rem;
     }
 }
