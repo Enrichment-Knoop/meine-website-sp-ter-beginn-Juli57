@@ -1,19 +1,25 @@
+<!-- filename: about.html -->
 <!DOCTYPE html>
 <html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JuliAmKunst – About</title>
-    <link rel="stylesheet" href="style.css?v=1.25">
+    <link rel="stylesheet" href="style.css?v=1.26">
 </head>
 <body class="about-page">
 
-    <nav>
+    <nav class="site-nav" aria-label="Hauptnavigation">
         <p id="logo">JuliAmKunst</p>
-        <button class="burger" aria-label="Menü öffnen">
+        <button
+            class="burger"
+            aria-label="Menü"
+            aria-expanded="false"
+            aria-controls="primary-navigation"
+        >
             <span></span><span></span><span></span>
         </button>
-        <ul class="links">
+        <ul id="primary-navigation" class="links">
             <li><a href="index.html">Home</a></li>
             <li><a href="about.html" class="active">About</a></li>
             <li><a href="galerie.html">Galerie</a></li>
@@ -22,6 +28,9 @@
     </nav>
 
     <section class="about-wrapper">
+        <!-- Screenreader-Text für das Hintergrundbild auf der About-Seite -->
+        <span class="sr-only">Hintergrundbild: Strukturierte Farbflächen in Rosa- und Lilatönen (Datei 4.jpg).</span>
+
         <div class="glass-box about-content">
             <h2>Über mich</h2>
 
@@ -48,6 +57,6 @@
         </div>
     </section>
 
-    <script src="script.js?v=1.25"></script>
+    <script src="script.js?v=1.26"></script>
 </body>
 </html>

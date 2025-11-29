@@ -1,26 +1,32 @@
+<!-- filename: index.html -->
 <!DOCTYPE html>
 <html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JuliAmKunst – Home</title>
-    <link rel="stylesheet" href="style.css?v=1.25">
+    <link rel="stylesheet" href="style.css?v=1.26">
 </head>
 <body>
 
     <!-- Navigation -->
-    <nav>
+    <nav class="site-nav" aria-label="Hauptnavigation">
         <p id="logo">JuliAmKunst</p>
 
-        <!-- Hamburger‑Button – nur sichtbar bei ≤ 600 px -->
-        <button class="burger" aria-label="Menü öffnen">
+        <!-- Hamburger‑Button – nur sichtbar bei ≤ 600 px -->
+        <button
+            class="burger"
+            aria-label="Menü"
+            aria-expanded="false"
+            aria-controls="primary-navigation"
+        >
             <span></span>
             <span></span>
             <span></span>
         </button>
 
-        <!-- Links – werden bei Mobilgeräten per JS ein‑/ausgeblendet -->
-        <ul class="links">
+        <!-- Links – werden bei Mobilgeräten per JS ein-/ausgeblendet -->
+        <ul id="primary-navigation" class="links">
             <li><a href="index.html" class="active">Home</a></li>
             <li><a href="about.html">About</a></li>
             <li><a href="galerie.html">Galerie</a></li>
@@ -49,12 +55,18 @@
 
         <!-- Bild‑Container – drei Bild‑Boxen -->
         <div class="pictures">
-            <div class="img" id="img1"></div>
-            <div class="img" id="img2"></div>
-            <div class="img" id="img3"></div>
+            <div class="img" id="img1">
+                <span class="sr-only">Bild 1: Abstrakte Komposition in kräftigen Farben.</span>
+            </div>
+            <div class="img" id="img2">
+                <span class="sr-only">Bild 2: Detailreiche Zeichnung mit feinen Linien.</span>
+            </div>
+            <div class="img" id="img3">
+                <span class="sr-only">Bild 3: Stimmungsvolles Gemälde mit weichen Verläufen.</span>
+            </div>
         </div>
     </div>
 
-    <script src="script.js?v=1.25"></script>
+    <script src="script.js?v=1.26"></script>
 </body>
 </html>

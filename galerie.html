@@ -1,51 +1,37 @@
+<!-- filename: galerie.html -->
 <!DOCTYPE html>
 <html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JuliAmKunst – Galerie</title>
-    <link rel="stylesheet" href="style.css?v=1.25">
-    <style>
-        html, body {
-            height: 100%;
-            margin: 0;
-            background: #ffccf2;
-            display: flex;
-            flex-direction: column;
-        }
-        .gallery-info {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 2rem;
-        }
-        .gallery-info h1 { font-size: 2.5rem; margin-bottom: 1rem; }
-        .gallery-info p  { font-size: 1.2rem; }
-    </style>
+    <link rel="stylesheet" href="style.css?v=1.26">
 </head>
 <body>
 
-    <nav>
+    <nav class="site-nav" aria-label="Hauptnavigation">
         <p id="logo">JuliAmKunst</p>
-        <button class="burger" aria-label="Menü öffnen">
+        <button
+            class="burger"
+            aria-label="Menü"
+            aria-expanded="false"
+            aria-controls="primary-navigation"
+        >
             <span></span><span></span><span></span>
         </button>
-        <ul class="links">
+        <ul id="primary-navigation" class="links">
             <li><a href="index.html">Home</a></li>
             <li><a href="about.html">About</a></li>
-            <li><a href="galerie.html" class="active">Galerie</a></li>
+            <li><a class="active" href="galerie.html">Galerie</a></li>
             <li><a href="impressum.html">Contact</a></li>
         </ul>
     </nav>
 
-    <section class="gallery-info">
+    <section class="gallery-info content">
         <h1>Galerie</h1>
         <p>Hier kommen bald weitere Bilder – stay tuned! 📸✨</p>
     </section>
 
-    <script src="script.js?v=1.25"></script>
+    <script src="script.js?v=1.26"></script>
 </body>
 </html>
