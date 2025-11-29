@@ -1,17 +1,15 @@
-/* Version: 1.23 – komplette Styles inkl. Responsive Media Queries */
-
 /* -------------------------------------------------
-   Basis‑Reset
+   Version 1.24 – komplette Styles inkl. neuer Mobile‑Rules
    ------------------------------------------------- */
+
+/* Basis‑Reset ------------------------------------------------- */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* -------------------------------------------------
-   Grundlayout
-   ------------------------------------------------- */
+/* Grundlayout ------------------------------------------------- */
 html,
 body {
     height: 100%;
@@ -27,21 +25,17 @@ body {
     color: #000;
 }
 
-/* -------------------------------------------------
-   About‑Seite Hintergrund
-   ------------------------------------------------- */
+/* About‑Seite Hintergrund ------------------------------------------------- */
 .about-page {
     background: #ffccf2 url("img/4.jpg") center/cover no-repeat;
 }
 
-/* -------------------------------------------------
-   Glas‑Box (größer & weißer)
-   ------------------------------------------------- */
+/* Glas‑Box (größer & weißer) ------------------------------------------------- */
 .about-wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: calc(100vh - 60px);
+    height: calc(100vh - 60px);   /* Desktop‑Höhe */
     padding: 2rem;
 }
 .glass-box {
@@ -55,9 +49,7 @@ body {
     max-width: 1000px;
 }
 
-/* -------------------------------------------------
-   Navigation
-   ------------------------------------------------- */
+/* Navigation ------------------------------------------------- */
 nav {
     background-color: #ffccf2;
     padding: 0 10px;
@@ -88,9 +80,7 @@ nav {
     color: #add8e6;
 }
 
-/* -------------------------------------------------
-   Hauptbereich (Desktop)
-   ------------------------------------------------- */
+/* Hauptbereich (Desktop) ------------------------------------------------- */
 .main {
     width: 100%;
     min-height: 100vh;
@@ -102,7 +92,7 @@ nav {
     padding: 2rem;
 }
 
-/* Text‑Spalte */
+/* Text‑Spalte ------------------------------------------------- */
 .txt {
     grid-column: 1/2;
     grid-row: 1/2;
@@ -113,20 +103,11 @@ nav {
     text-align: center;
     gap: 1rem;
 }
-.txt h2 {
-    font-size: 2.5rem;
-    margin: 0;
-}
-.txt p {
-    font-size: 1.1rem;
-    max-width: 600px;
-}
+.txt h2 { font-size: 2.5rem; margin: 0; }
+.txt p  { font-size: 1.1rem; max-width: 600px; }
 
-/* Buttons */
-.buttons {
-    display: flex;
-    gap: 24px;
-}
+/* Buttons ------------------------------------------------- */
+.buttons { display: flex; gap: 24px; }
 .button {
     display: inline-block;
     border-radius: 20px;
@@ -138,8 +119,7 @@ nav {
     text-decoration: none;
     background-color: #000;
     color: #fff;
-    transition: background-color 0.2s ease-in-out,
-                box-shadow 0.2s ease-in-out;
+    transition: background-color .2s, box-shadow .2s;
 }
 .button:hover,
 .button:focus {
@@ -148,7 +128,7 @@ nav {
     box-shadow: 0 0 12px rgba(173,216,230,0.6);
 }
 
-/* Bild‑Container */
+/* Bild‑Container ------------------------------------------------- */
 .pictures {
     grid-column: 2/3;
     grid-row: 1/2;
@@ -160,7 +140,7 @@ nav {
     overflow: hidden;
 }
 
-/* Bild‑Boxen – 4:3‑Verhältnis, stärker transparent */
+/* Bild‑Boxen – 4:3‑Verhältnis, stärker transparent ------------------------------------------------- */
 .img {
     width: 32%;
     aspect-ratio: 4 / 3;
@@ -168,9 +148,8 @@ nav {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    opacity: 0.7;
-    transition: opacity 0.2s ease-in-out,
-                transform 0.2s ease-in-out;
+    opacity: 0.7;               /* leicht undurchsichtig */
+    transition: opacity .2s, transform .2s;
 }
 .img:hover {
     opacity: 1;
@@ -180,78 +159,93 @@ nav {
 #img2 { background-image: url("img/2.jpg"); }
 #img3 { background-image: url("img/3.jpg"); }
 
-/* -------------------------------------------------
-   Content‑Klassen (About, Impressum, …)
-   ------------------------------------------------- */
+/* Content‑Klassen (About, Impressum, …) ------------------------------------------------- */
 .content {
     max-width: 900px;
     margin: 4rem auto;
     padding: 0 2rem;
 }
 .content h2,
-.gallery-info h1 {
-    font-size: 2.2rem;
-    margin-bottom: 1rem;
-}
+.gallery-info h1 { font-size: 2.2rem; margin-bottom: 1rem; }
 .content p,
-.gallery-info p {
-    font-size: 1.1rem;
-    line-height: 1.6;
-}
+.gallery-info p { font-size: 1.1rem; line-height: 1.6; }
 
 /* -------------------------------------------------
    Tablet‑Media‑Query (≤ 768 px)
    ------------------------------------------------- */
 @media (max-width: 768px) {
-    nav {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 8px;
-    }
-    .links {
-        flex-direction: column;
-        gap: 12px;
-    }
+    nav { flex-direction: column; align-items: flex-start; gap: 8px; }
+    .links { flex-direction: column; gap: 12px; }
 
-    .main {
-        grid-template-columns: 1fr;
-        grid-template-rows: auto;
-    }
+    .main { grid-template-columns: 1fr; grid-template-rows: auto; }
+    .pictures { height: auto; flex-wrap: wrap; justify-content: center; }
 
-    .pictures {
-        height: auto;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
+    .img { width: 48%; aspect-ratio: 4 / 3; margin-bottom: 10px; }
 
-    .img {
-        width: 48%;
-        aspect-ratio: 4 / 3;
-        margin-bottom: 10px;
-    }
-
-    .about-wrapper {
-        height: auto;
-        padding: 1rem;
-    }
+    .about-wrapper { height: auto; padding: 1rem; }
 }
 
 /* -------------------------------------------------
    Mobile‑Media‑Query (≤ 600 px)
    ------------------------------------------------- */
 @media (max-width: 600px) {
-    /* Navigation */
+
+    /* ---- Navigation bleibt horizontal (quer) ---- */
     nav {
-        flex-direction: column;
-        align-items: flex-start;
+        flex-direction: row;          /* nicht mehr spaltenweise */
+        align-items: center;
+        justify-content: space-between;
         padding: 0.5rem 1rem;
     }
     #logo {
-        font-size: 1.4rem;
+        font-size: 1.6rem;           /* gut lesbar ohne zu vergrößern */
     }
     .links {
-        flex-direction: column;
-        gap: 0.8rem;
-        margin-top: 0.5rem;
+        flex-direction: row;          /* nebeneinander */
+        gap: 20px;                    /* etwas Abstand, aber kompakt */
+        margin-top: 0;
     }
     .links a {
+        font-size: 0.95rem;           /* lesbare Größe */
+    }
+
+    /* ---- Hauptbereich: Text oben, Bild‑Boxen darunter ---- */
+    .main {
+        grid-template-columns: 1fr;   /* eine Spalte */
+        padding: 1rem;
+    }
+    .txt {
+        order: 1;                     /* zuerst Text */
+        text-align: left;
+        margin-bottom: 1.5rem;
+    }
+    .txt h2 { font-size: 2rem; }
+    .txt p  { font-size: 1rem; }
+    .button { font-size: 0.9rem; padding: 0.5rem 1rem; }
+
+    .pictures {
+        order: 2;                     /* danach die Bilder */
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.8rem;
+        height: auto;
+    }
+    .img {
+        width: 48%;                   /* zwei Bilder pro Zeile */
+        aspect-ratio: 4 / 3;
+        margin-bottom: 0.5rem;
+    }
+
+    /* ---- About‑Seite: Vollbild‑Hintergrund ---- */
+    .about-wrapper {
+        height: 100vh;                /* gesamte Viewport‑Höhe */
+        padding: 0;                   /* kein Innenabstand, damit das Bild komplett sichtbar ist */
+        align-items: center;
+    }
+    .glass-box {
+        padding: 2rem;                /* etwas Innenabstand für den Text */
+        max-width: 90%;               /* fast die gesamte Breite, aber nicht zu breit */
+    }
+    .glass-box h2 { font-size: 1.8rem; }
+    .glass-box p  { font-size: 1rem; }
+}
