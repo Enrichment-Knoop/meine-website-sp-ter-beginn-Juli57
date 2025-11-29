@@ -1,5 +1,5 @@
 /* filename: style.css */
-/* Version: 1.26 – komplette Styles inkl. Hamburger‑Menu (≤ 600 px) und A11y */
+/* Version: 1.27 – Mobile-Optimierungen: Bildboxen unter Text (Home), sichtbarer Header (About) */
 
 /* -------------------------------------------------
    Basis‑Reset & Helfer
@@ -226,7 +226,7 @@ nav.site-nav {
 }
 
 /* -------------------------------------------------
-   Mobile (≤ 600 px) – horizontale Nav mit Hamburger
+   Mobile (≤ 600 px) – Optimierungen
    ------------------------------------------------- */
 @media (max-width: 600px) {
     nav.site-nav {
@@ -234,6 +234,13 @@ nav.site-nav {
         align-items: center;
         justify-content: space-between;
         padding: .5rem 1rem;
+    }
+
+    /* About: Header sichtbar halten */
+    .about-page .site-nav {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
     }
 
     .burger { display: flex; }
@@ -255,15 +262,23 @@ nav.site-nav {
     }
     .links.is-open { display: flex; }
 
-    /* Hauptbereich mobil einspaltig, Text oben, Bilder darunter */
+    /* Startseite: Text oben, Bildboxen darunter (explizit) */
     .main {
         grid-template-columns: 1fr;
         padding: 1rem;
     }
+    .txt {
+        grid-column: 1 / -1;
+        grid-row: 1;
+    }
+    .pictures {
+        grid-column: 1 / -1;
+        grid-row: 2;
+    }
 
-    /* About mobil: Vollbild-Hintergrund, kein Padding */
+    /* About mobil: Vollbild-Eindruck, aber Platz für Header lassen */
     .about-wrapper {
-        height: 100vh;
+        min-height: calc(100vh - 56px);
         padding: 0;
     }
 }

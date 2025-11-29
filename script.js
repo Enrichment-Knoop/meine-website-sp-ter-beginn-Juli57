@@ -1,5 +1,5 @@
 /* filename: script.js */
-// Version: 1.26
+// Version: 1.27
 
 /* -------------------------------------------------
    script.js – Hamburger-Menü & Smooth Scrolling
