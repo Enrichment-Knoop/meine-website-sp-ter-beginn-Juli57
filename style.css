@@ -1,15 +1,17 @@
-/* -------------------------------------------------
-   Version 1.24 – komplette Styles inkl. neuer Mobile‑Rules
-   ------------------------------------------------- */
+/* Version: 1.25 – komplette Styles inkl. Hamburger‑Menu für ≤ 600 px */
 
-/* Basis‑Reset ------------------------------------------------- */
+/* -------------------------------------------------
+   Basis‑Reset
+   ------------------------------------------------- */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Grundlayout ------------------------------------------------- */
+/* -------------------------------------------------
+   Grundlayout
+   ------------------------------------------------- */
 html,
 body {
     height: 100%;
@@ -25,12 +27,16 @@ body {
     color: #000;
 }
 
-/* About‑Seite Hintergrund ------------------------------------------------- */
+/* -------------------------------------------------
+   About‑Seite Hintergrund
+   ------------------------------------------------- */
 .about-page {
     background: #ffccf2 url("img/4.jpg") center/cover no-repeat;
 }
 
-/* Glas‑Box (größer & weißer) ------------------------------------------------- */
+/* -------------------------------------------------
+   Glas‑Box (größer & weißer)
+   ------------------------------------------------- */
 .about-wrapper {
     display: flex;
     justify-content: center;
@@ -49,7 +55,9 @@ body {
     max-width: 1000px;
 }
 
-/* Navigation ------------------------------------------------- */
+/* -------------------------------------------------
+   Navigation (Desktop)
+   ------------------------------------------------- */
 nav {
     background-color: #ffccf2;
     padding: 0 10px;
@@ -73,14 +81,35 @@ nav {
     text-decoration: none;
     color: #000;
     font-weight: 500;
-    transition: color 0.2s ease-in-out;
+    transition: color .2s;
 }
 .links a:hover,
 .links a.active {
     color: #add8e6;
 }
 
-/* Hauptbereich (Desktop) ------------------------------------------------- */
+/* Hamburger‑Button – nur sichtbar bei Mobilgeräten */
+.burger {
+    display: none;               /* Desktop: ausgeblendet */
+    flex-direction: column;
+    justify-content: space-between;
+    width: 24px;
+    height: 18px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+.burger span {
+    display: block;
+    height: 3px;
+    background: #000;
+    border-radius: 2px;
+}
+
+/* -------------------------------------------------
+   Hauptbereich (Desktop)
+   ------------------------------------------------- */
 .main {
     width: 100%;
     min-height: 100vh;
@@ -92,7 +121,7 @@ nav {
     padding: 2rem;
 }
 
-/* Text‑Spalte ------------------------------------------------- */
+/* Text‑Spalte */
 .txt {
     grid-column: 1/2;
     grid-row: 1/2;
@@ -106,16 +135,16 @@ nav {
 .txt h2 { font-size: 2.5rem; margin: 0; }
 .txt p  { font-size: 1.1rem; max-width: 600px; }
 
-/* Buttons ------------------------------------------------- */
+/* Buttons */
 .buttons { display: flex; gap: 24px; }
 .button {
     display: inline-block;
     border-radius: 20px;
     border: none;
     font-weight: bold;
-    font-size: 0.95rem;
+    font-size: .95rem;
     cursor: pointer;
-    padding: 0.6rem 1.2rem;
+    padding: .6rem 1.2rem;
     text-decoration: none;
     background-color: #000;
     color: #fff;
@@ -125,10 +154,10 @@ nav {
 .button:focus {
     background-color: #add8e6;
     color: #000;
-    box-shadow: 0 0 12px rgba(173,216,230,0.6);
+    box-shadow: 0 0 12px rgba(173,216,230,.6);
 }
 
-/* Bild‑Container ------------------------------------------------- */
+/* Bild‑Container */
 .pictures {
     grid-column: 2/3;
     grid-row: 1/2;
@@ -140,7 +169,7 @@ nav {
     overflow: hidden;
 }
 
-/* Bild‑Boxen – 4:3‑Verhältnis, stärker transparent ------------------------------------------------- */
+/* Bild‑Boxen – 4:3‑Verhältnis, leicht transparent */
 .img {
     width: 32%;
     aspect-ratio: 4 / 3;
@@ -148,7 +177,7 @@ nav {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    opacity: 0.7;               /* leicht undurchsichtig */
+    opacity: 0.7;
     transition: opacity .2s, transform .2s;
 }
 .img:hover {
@@ -159,7 +188,7 @@ nav {
 #img2 { background-image: url("img/2.jpg"); }
 #img3 { background-image: url("img/3.jpg"); }
 
-/* Content‑Klassen (About, Impressum, …) ------------------------------------------------- */
+/* Content‑Klassen (About, Impressum, …) */
 .content {
     max-width: 900px;
     margin: 4rem auto;
@@ -186,66 +215,15 @@ nav {
 }
 
 /* -------------------------------------------------
-   Mobile‑Media‑Query (≤ 600 px)
+   Mobile‑Media‑Query (≤ 600 px) – Hamburger‑Menu
    ------------------------------------------------- */
 @media (max-width: 600px) {
 
-    /* ---- Navigation bleibt horizontal (quer) ---- */
+    /* ---- Navigation ---- */
     nav {
-        flex-direction: row;          /* nicht mehr spaltenweise */
+        flex-direction: row;               /* bleibt horizontal */
         align-items: center;
         justify-content: space-between;
-        padding: 0.5rem 1rem;
+        padding: .5rem 1rem;
     }
-    #logo {
-        font-size: 1.6rem;           /* gut lesbar ohne zu vergrößern */
-    }
-    .links {
-        flex-direction: row;          /* nebeneinander */
-        gap: 20px;                    /* etwas Abstand, aber kompakt */
-        margin-top: 0;
-    }
-    .links a {
-        font-size: 0.95rem;           /* lesbare Größe */
-    }
-
-    /* ---- Hauptbereich: Text oben, Bild‑Boxen darunter ---- */
-    .main {
-        grid-template-columns: 1fr;   /* eine Spalte */
-        padding: 1rem;
-    }
-    .txt {
-        order: 1;                     /* zuerst Text */
-        text-align: left;
-        margin-bottom: 1.5rem;
-    }
-    .txt h2 { font-size: 2rem; }
-    .txt p  { font-size: 1rem; }
-    .button { font-size: 0.9rem; padding: 0.5rem 1rem; }
-
-    .pictures {
-        order: 2;                     /* danach die Bilder */
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 0.8rem;
-        height: auto;
-    }
-    .img {
-        width: 48%;                   /* zwei Bilder pro Zeile */
-        aspect-ratio: 4 / 3;
-        margin-bottom: 0.5rem;
-    }
-
-    /* ---- About‑Seite: Vollbild‑Hintergrund ---- */
-    .about-wrapper {
-        height: 100vh;                /* gesamte Viewport‑Höhe */
-        padding: 0;                   /* kein Innenabstand, damit das Bild komplett sichtbar ist */
-        align-items: center;
-    }
-    .glass-box {
-        padding: 2rem;                /* etwas Innenabstand für den Text */
-        max-width: 90%;               /* fast die gesamte Breite, aber nicht zu breit */
-    }
-    .glass-box h2 { font-size: 1.8rem; }
-    .glass-box p  { font-size: 1rem; }
-}
+    #logo { font-size

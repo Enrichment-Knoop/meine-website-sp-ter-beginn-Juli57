@@ -4,12 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JuliAmKunst – Home</title>
-    <link rel="stylesheet" href="style.css?v=1.24">
+    <link rel="stylesheet" href="style.css?v=1.25">
 </head>
 <body>
 
+    <!-- Navigation -->
     <nav>
         <p id="logo">JuliAmKunst</p>
+
+        <!-- Hamburger‑Button – nur sichtbar bei ≤ 600 px -->
+        <button class="burger" aria-label="Menü öffnen">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <!-- Links – werden bei Mobilgeräten per JS ein‑/ausgeblendet -->
         <ul class="links">
             <li><a href="index.html" class="active">Home</a></li>
             <li><a href="about.html">About</a></li>
@@ -18,7 +28,9 @@
         </ul>
     </nav>
 
+    <!-- Hauptbereich -->
     <div class="main">
+        <!-- Text‑Spalte -->
         <div class="txt">
             <h2>Julia Amalie und ihre Kunst</h2>
 
@@ -35,6 +47,7 @@
             </div>
         </div>
 
+        <!-- Bild‑Container – drei Bild‑Boxen -->
         <div class="pictures">
             <div class="img" id="img1"></div>
             <div class="img" id="img2"></div>
@@ -42,6 +55,6 @@
         </div>
     </div>
 
-    <script src="script.js?v=1.24"></script>
+    <script src="script.js?v=1.25"></script>
 </body>
 </html>
