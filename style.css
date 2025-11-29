@@ -1,4 +1,4 @@
-/* Version: 1.22 */
+/* Version: 1.23 – komplette Styles inkl. Responsive Media Queries */
 
 /* -------------------------------------------------
    Basis‑Reset
@@ -10,7 +10,7 @@
 }
 
 /* -------------------------------------------------
-   HTML & Body – voller Viewport, hell‑rosa Verlauf
+   Grundlayout
    ------------------------------------------------- */
 html,
 body {
@@ -28,35 +28,35 @@ body {
 }
 
 /* -------------------------------------------------
-   About‑Seite – Hintergrundbild 4.jpg (mit pink‑Fallback)
+   About‑Seite Hintergrund
    ------------------------------------------------- */
 .about-page {
     background: #ffccf2 url("img/4.jpg") center/cover no-repeat;
 }
 
 /* -------------------------------------------------
-   Glas‑Box (Glass‑morphism) – größer und weißer
+   Glas‑Box (größer & weißer)
    ------------------------------------------------- */
 .about-wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: calc(100vh - 60px);   /* volle Höhe minus Navigation */
+    height: calc(100vh - 60px);
     padding: 2rem;
 }
 .glass-box {
-    background: rgba(255, 255, 255, 0.5);   /* stärker weiß (Alpha 0.5) */
+    background: rgba(255, 255, 255, 0.5);
     border-radius: 20px;
     box-shadow: 0 12px 36px rgba(0, 0, 0, 0.15);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border: 1px solid rgba(255, 255, 255, 0.4);
-    padding: 3rem;               /* mehr Innenabstand */
-    max-width: 1000px;           /* größere Breite */
+    padding: 3rem;
+    max-width: 1000px;
 }
 
 /* -------------------------------------------------
-   Navigation – helles Rosa
+   Navigation
    ------------------------------------------------- */
 nav {
     background-color: #ffccf2;
@@ -85,11 +85,11 @@ nav {
 }
 .links a:hover,
 .links a.active {
-    color: #add8e6;   /* hellblau beim Hover/aktiv */
+    color: #add8e6;
 }
 
 /* -------------------------------------------------
-   Hauptbereich – mindestens volle Viewport‑Höhe
+   Hauptbereich (Desktop)
    ------------------------------------------------- */
 .main {
     width: 100%;
@@ -102,9 +102,7 @@ nav {
     padding: 2rem;
 }
 
-/* -------------------------------------------------
-   Text‑Spalte – zentriert
-   ------------------------------------------------- */
+/* Text‑Spalte */
 .txt {
     grid-column: 1/2;
     grid-row: 1/2;
@@ -118,17 +116,13 @@ nav {
 .txt h2 {
     font-size: 2.5rem;
     margin: 0;
-    color: #000;
 }
 .txt p {
     font-size: 1.1rem;
-    color: #000;
     max-width: 600px;
 }
 
-/* -------------------------------------------------
-   Buttons – nutzbar für <a> und <button>
-   ------------------------------------------------- */
+/* Buttons */
 .buttons {
     display: flex;
     gap: 24px;
@@ -154,9 +148,7 @@ nav {
     box-shadow: 0 0 12px rgba(173,216,230,0.6);
 }
 
-/* -------------------------------------------------
-   Bild‑Container – volle Höhe des Viewports
-   ------------------------------------------------- */
+/* Bild‑Container */
 .pictures {
     grid-column: 2/3;
     grid-row: 1/2;
@@ -168,9 +160,7 @@ nav {
     overflow: hidden;
 }
 
-/* -------------------------------------------------
-   Bild‑Boxen – 4:3‑Verhältnis, stärker transparent
-   ------------------------------------------------- */
+/* Bild‑Boxen – 4:3‑Verhältnis, stärker transparent */
 .img {
     width: 32%;
     aspect-ratio: 4 / 3;
@@ -178,7 +168,7 @@ nav {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    opacity: 0.7;                 /* leicht undurchsichtig */
+    opacity: 0.7;
     transition: opacity 0.2s ease-in-out,
                 transform 0.2s ease-in-out;
 }
@@ -191,46 +181,26 @@ nav {
 #img3 { background-image: url("img/3.jpg"); }
 
 /* -------------------------------------------------
-   Layout‑Klassen für weitere Seiten
+   Content‑Klassen (About, Impressum, …)
    ------------------------------------------------- */
 .content {
     max-width: 900px;
     margin: 4rem auto;
     padding: 0 2rem;
 }
-.content h2 {
+.content h2,
+.gallery-info h1 {
     font-size: 2.2rem;
     margin-bottom: 1rem;
-    color: #000;
 }
-.content p {
+.content p,
+.gallery-info p {
     font-size: 1.1rem;
     line-height: 1.6;
-    color: #000;
-}
-
-/* About‑Seite – größerer Text in der Glas‑Box */
-.about-content p {
-    font-size: 1.2rem;
-}
-
-/* Galerie‑Grid (Platzhalter‑Stil) */
-.gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1rem;
-    margin-top: 2rem;
-}
-.gallery-item {
-    height: 200px;
-    background: #ddd;
-    border-radius: 10px;
-    background-size: cover;
-    background-position: center;
 }
 
 /* -------------------------------------------------
-   Responsives Design (kleinere Bildschirme)
+   Tablet‑Media‑Query (≤ 768 px)
    ------------------------------------------------- */
 @media (max-width: 768px) {
     nav {
@@ -255,7 +225,7 @@ nav {
     }
 
     .img {
-        width: 48%;          /* zwei Bilder pro Zeile */
+        width: 48%;
         aspect-ratio: 4 / 3;
         margin-bottom: 10px;
     }
@@ -265,3 +235,23 @@ nav {
         padding: 1rem;
     }
 }
+
+/* -------------------------------------------------
+   Mobile‑Media‑Query (≤ 600 px)
+   ------------------------------------------------- */
+@media (max-width: 600px) {
+    /* Navigation */
+    nav {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 0.5rem 1rem;
+    }
+    #logo {
+        font-size: 1.4rem;
+    }
+    .links {
+        flex-direction: column;
+        gap: 0.8rem;
+        margin-top: 0.5rem;
+    }
+    .links a {
