@@ -1,8 +1,8 @@
 /* filename: script.js */
-// Version: 1.27
+// Version: 1.30
 
 /* -------------------------------------------------
-   script.js – Hamburger-Menü & Smooth Scrolling
+   script.js – Hamburger-Menü, Smooth Scrolling, Galerie-Lightbox
    ------------------------------------------------- */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -10,18 +10,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const navList = document.querySelector('#primary-navigation');
     const navLinks = navList ? navList.querySelectorAll('a[href]') : [];
 
-    // Hamburger-Menu + ARIA
+    // Hamburger-Menü + ARIA
     if (burger && navList) {
-        // Initialer ARIA-Zustand
         burger.setAttribute('aria-expanded', 'false');
-
-        // Öffnen/Schließen
         burger.addEventListener('click', () => {
             const isOpen = navList.classList.toggle('is-open');
             burger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
         });
-
-        // Nach Link-Klick auf Mobil schließt das Menü
         navLinks.forEach(link => {
             link.addEventListener('click', () => {
                 if (window.matchMedia('(max-width: 600px)').matches) {
@@ -30,8 +25,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
         });
-
-        // Beim Resize auf Desktop/Tablet Menü schließen
         window.addEventListener('resize', () => {
             if (!window.matchMedia('(max-width: 600px)').matches) {
                 navList.classList.remove('is-open');
@@ -55,4 +48,52 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
+
+    // Galerie: Lightbox initialisieren
+    initLightbox();
 });
+
+function initLightbox() {
+    const grid = document.getElementById('gallery-grid');
+    const lightbox = document.getElementById('lightbox');
+    const lbImg = lightbox ? lightbox.querySelector('.lightbox-img') : null;
+    const lbCaption = lightbox ? lightbox.querySelector('.lightbox-caption') : null;
+    const lbClose = lightbox ? lightbox.querySelector('.lightbox-close') : null;
+
+    if (!grid || !lightbox || !lbImg || !lbCaption || !lbClose) return;
+
+    // Öffnen der Lightbox beim Klick auf ein Bild
+    grid.addEventListener('click', (e) => {
+        const img = e.target.closest('img');
+        if (!img) return;
+        openLightbox(img.src, img.alt, img.nextElementSibling?.textContent || '');
+    });
+
+    // Schließen-Events
+    lbClose.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', (e) => {
+        // Klick außerhalb des Bildes schließt
+        if (e.target === lightbox) closeLightbox();
+    });
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && lightbox.classList.contains('is-open')) {
+            closeLightbox();
+        }
+    });
+
+    function openLightbox(src, alt, caption) {
+        lbImg.src = src;
+        lbImg.alt = alt || '';
+        lbCaption.textContent = caption || alt || '';
+        lightbox.classList.add('is-open');
+        lightbox.setAttribute('aria-hidden', 'false');
+    }
+
+    function closeLightbox() {
+        lightbox.classList.remove('is-open');
+        lightbox.setAttribute('aria-hidden', 'true');
+        lbImg.src = '';
+        lbImg.alt = '';
+        lbCaption.textContent = '';
+    }
+}

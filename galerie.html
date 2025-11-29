@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JuliAmKunst – Galerie</title>
-    <link rel="stylesheet" href="style.css?v=1.27">
+    <link rel="stylesheet" href="style.css?v=1.30">
 </head>
 <body>
 
@@ -27,11 +27,57 @@
         </ul>
     </nav>
 
-    <section class="gallery-info content">
+    <section class="content">
         <h1>Galerie</h1>
-        <p>Hier kommen bald weitere Bilder – stay tuned! 📸✨</p>
+
+        <!-- Galerie-Grid mit allen neuen Bildern -->
+        <div class="gallery-grid" id="gallery-grid">
+            <figure>
+                <img src="img/B%C3%A4r.jpg" alt="Bär – Illustration eines Bären" loading="lazy">
+                <figcaption>Bär</figcaption>
+            </figure>
+            <figure>
+                <img src="img/Blumenkopf.jpg" alt="Blumenkopf – Porträt mit floralen Elementen" loading="lazy">
+                <figcaption>Blumenkopf</figcaption>
+            </figure>
+            <figure>
+                <img src="img/BuntesKleid.jpg" alt="Buntes Kleid – Figur mit farbenfrohem Kleid" loading="lazy">
+                <figcaption>Buntes Kleid</figcaption>
+            </figure>
+            <figure>
+                <img src="img/Drache.jpg" alt="Drache – Fantasiewesen in kräftigen Farben" loading="lazy">
+                <figcaption>Drache</figcaption>
+            </figure>
+            <figure>
+                <img src="img/Grinch.jpg" alt="Grinch – Charakterstudie im Cartoon-Stil" loading="lazy">
+                <figcaption>Grinch</figcaption>
+            </figure>
+            <figure>
+                <img src="img/Hogwartseule.jpg" alt="Hogwartseule – Eule aus der Zauberwelt" loading="lazy">
+                <figcaption>Hogwartseule</figcaption>
+            </figure>
+            <figure>
+                <img src="img/Reh.jpg" alt="Reh – zartes Waldtier in natürlicher Szene" loading="lazy">
+                <figcaption>Reh</figcaption>
+            </figure>
+            <figure>
+                <img src="img/Schulm%C3%A4dchen.jpg" alt="Schulmädchen – Figurenstudie" loading="lazy">
+                <figcaption>Schulmädchen</figcaption>
+            </figure>
+            <figure>
+                <img src="img/Weihnachtsmann.jpg" alt="Weihnachtsmann – festliches Motiv" loading="lazy">
+                <figcaption>Weihnachtsmann</figcaption>
+            </figure>
+        </div>
     </section>
 
-    <script src="script.js?v=1.27"></script>
+    <!-- Lightbox-Overlay -->
+    <div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-label="Bildanzeige">
+        <button class="lightbox-close" aria-label="Schließen">×</button>
+        <img class="lightbox-img" alt="">
+        <p class="lightbox-caption"></p>
+    </div>
+
+    <script src="script.js?v=1.30"></script>
 </body>
 </html>
